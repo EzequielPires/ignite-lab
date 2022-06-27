@@ -12,4 +12,33 @@ datasource db {
 
 model Student {
   id String @id @default(uuid())
+
+  createAt    DateTime     @default(now())
+  updatedAt   DateTime     @default(now()) @updatedAt
+  enrollments Enrollment[]
+}
+
+model Course {
+  id String @id @default(uuid())
+
+  title String
+  slug  String @unique
+
+  createAt     DateTime     @default(now())
+  updatedAt    DateTime     @default(now()) @updatedAt
+  enrollmentOn Enrollment[]
+}
+
+model Enrollment {
+  id String @id @default(uuid())
+
+  student   Student @relation(fields: [studentId], references: [id])
+  studentId String
+
+  course   Course @relation(fields: [courseId], references: [id])
+  courseId String
+
+  canceledAt DateTime? @default(now())
+  createAt   DateTime  @default(now())
+  updatedAt  DateTime  @default(now()) @updatedAt
 }
