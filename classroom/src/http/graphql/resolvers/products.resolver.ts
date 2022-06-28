@@ -4,12 +4,12 @@ import { PrismaService } from 'src/database/prisma/prisma.service';
 import { AuthorizationGuard } from 'src/http/auth/authorization.guard';
 
 @Resolver('test')
-export class TestController {
+export class ProductsResolver {
     constructor(private prisma: PrismaService) {}
 
     @Query(() => String)
     @UseGuards(AuthorizationGuard)
-    hello() {
+    products() {
         return 'this.prisma.customer.findMany()';
     }
 }
