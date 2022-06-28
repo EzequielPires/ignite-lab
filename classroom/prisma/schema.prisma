@@ -13,7 +13,9 @@ datasource db {
 model Student {
   id String @id @default(uuid())
 
-  createAt    DateTime     @default(now())
+  authUserId String? @unique
+
+  createdAt    DateTime     @default(now())
   updatedAt   DateTime     @default(now()) @updatedAt
   enrollments Enrollment[]
 }
@@ -24,7 +26,7 @@ model Course {
   title String
   slug  String @unique
 
-  createAt     DateTime     @default(now())
+  createdAt     DateTime     @default(now())
   updatedAt    DateTime     @default(now()) @updatedAt
   enrollmentOn Enrollment[]
 }
@@ -38,7 +40,7 @@ model Enrollment {
   course   Course @relation(fields: [courseId], references: [id])
   courseId String
 
-  canceledAt DateTime? @default(now())
-  createAt   DateTime  @default(now())
+  canceledAt DateTime?
+  createdAt   DateTime  @default(now())
   updatedAt  DateTime  @default(now()) @updatedAt
 }

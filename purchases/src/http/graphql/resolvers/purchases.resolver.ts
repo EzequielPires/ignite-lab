@@ -5,9 +5,7 @@ import { CurrentUser } from 'src/http/auth/current-user';
 import { CustomerService } from 'src/services/customers.service';
 import { ProductsService } from 'src/services/products.service';
 import { PurchasesService } from 'src/services/purchases.service';
-import { CreateProductInput } from '../inputs/create-product-input';
 import { CreatePurchaseInput } from '../inputs/create-purchase-input';
-import { Product } from '../models/products';
 import { Purchase } from '../models/purchase';
 
 @Resolver(() => Purchase)
